@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Rules\EmailValidate;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +32,13 @@ class RegisterController extends Controller
      *
      * @var string
      */
+
+    public function showRegistrationForm()
+    {
+        $types=Type::all();
+        return view('auth.register',compact('types'));
+    }
+
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -50,10 +59,14 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8','confirmed'],
+            'company_name' => ['required', 'string', 'max:255'],
+            'field' => ['required', 'string', 'max:255'],
+            'type' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users',new EmailValidate()],
+            'mobile_number' => ['required', 'string'],
         ]);
     }
 
@@ -67,8 +80,20 @@ class RegisterController extends Controller
     {
         return User::create([
             'name' => $data['name'],
+            'company_name' => $data['company_name'],
+            'field' => $data['field'],
+            'type' => $data['type'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'mobile_number' => $data['mobile_number'],
+//            'password' => Hash::make($data['password']),
         ]);
+
+        //send new User Registered For Admin
+        try {
+
+        }catch (\Exception $exception){
+
+        }
+        //send new User Registered For User
     }
 }
