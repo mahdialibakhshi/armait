@@ -1,0 +1,17 @@
+div.dropdown-menu{
+    right: 0 !important;
+}
+.m-0{
+    margin: 0;
+}
+.dropdown-menu{
+    left: auto !important;
+}
+.dropdown-item-active{
+    background-color: #2a2e39;
+    color: #ffffff;
+}
+.input-error-validate{
+    font-size: 9pt;
+    color: red;
+}
