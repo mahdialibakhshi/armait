@@ -17,7 +17,8 @@
                                     <div class="settings-profile">
 
                                     </div>
-                                </div>
+
+                                 </div>
                             </div>
                         </div>
                     </div>

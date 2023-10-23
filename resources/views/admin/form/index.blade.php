@@ -53,29 +53,29 @@
 {{--            <option value="zh-TW">台語</option>--}}
 {{--        </select></div>--}}
 </header>
-{{--<div class="content">--}}
-{{--    <h1 class="formbuilder-title">jQuery formBuilder ---}}
-{{--        <button class="editForm">Render</button>--}}
-{{--    </h1>--}}
-{{--    <h1 class="formrender-title">jQuery formRender ---}}
-{{--        <button class="editForm">Edit</button>--}}
-{{--        <button id="btnShow">Show UserData</button>--}}
-{{--    </h1>--}}
-{{--    <div class="build-wrap"></div>--}}
-{{--    <form class="render-wrap"></form>--}}
-{{--    <div class="action-buttons formbuilder-actions"><h2>Actions</h2>--}}
-{{--        <table id="action-api" class="api-table"></table>--}}
-{{--    </div>--}}
-{{--    <div class="action-buttons formrender-actions"><h2>Actions</h2>--}}
-{{--        <table id="demo-api" class="api-table"></table>--}}
-{{--    </div>--}}
-{{--</div>--}}
+<div class="content">
+    <h1 class="formbuilder-title">jQuery formBuilder -
+        <button class="editForm">Render</button>
+    </h1>
+    <h1 class="formrender-title">jQuery formRender -
+        <button class="editForm">Edit</button>
+        <button id="btnShow">Show UserData</button>
+    </h1>
+    <div class="build-wrap"></div>
+    <form class="render-wrap"></form>
+    <div class="action-buttons formbuilder-actions"><h2>Actions</h2>
+        <table id="action-api" class="api-table"></table>
+    </div>
+    <div class="action-buttons formrender-actions"><h2>Actions</h2>
+        <table id="demo-api" class="api-table"></table>
+    </div>
+</div>
 <div id="formbuilder-options"></div>
 <span id="spanResult"></span>
-<script src="{{asset('form/js/vendor.js')}}"></script>
-<script src="{{asset('form/js/form-builder.min.js')}}"></script>
-<script src="{{asset('form/js/form-render.min.js')}}"></script>
-<script src="{{asset('form/js/demo.min.js')}}"></script>
+<script src="{{asset('form/vendor.js')}}"></script>
+<script src="{{asset('form/form-builder.min.js')}}"></script>
+<script src="{{asset('form/form-render.min.js')}}"></script>
+<script src="{{asset('form/demo.min.js')}}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.3.1/jquery.rateyo.min.js"></script>
 </body>
 </html>
