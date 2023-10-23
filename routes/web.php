@@ -3,11 +3,17 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Header1Controller;
 use App\Http\Controllers\Admin\Header2Controller;
+use App\Http\Controllers\Admin\MessagesController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Home\IndexController;
 use App\Http\Controllers\Home\ProfileController;
+use App\Jobs\SendNewUserRegisteredForAdmin;
+use App\Mail\NewUserRegisteredAdminMail;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\CKEditorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,18 +50,47 @@ Route::name('admin.')->prefix('/admin-panel/management/')->group(function () {
     //Config
     Route::get('setting/index', [SettingController::class, 'index'])->name('setting.index');
     Route::put('setting/update', [SettingController::class, 'update'])->name('setting.update');
+    //users
+    Route::get('users/{type}/index', [UserController::class, 'index'])->name('users.index');
+    Route::post('users/remove', [UserController::class, 'remove'])->name('user.remove');
+    Route::get('users/{type}/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::put('users/{type}/{user}', [UserController::class, 'update'])->name('user.update');
+    Route::post('users/reset_password/{user}', [UserController::class, 'reset_password'])->name('user.reset_password');
+    //messages
+    Route::get('messages/emails/index', [MessagesController::class, 'emails'])->name('emails.index');
+    Route::get('messages/emails/{mail}/edit', [MessagesController::class, 'email_edit'])->name('email.edit');
+    Route::put('messages/emails/{mail}/update', [MessagesController::class, 'email_update'])->name('email.update');
+    Route::get('messages/alerts/index', [MessagesController::class, 'alerts'])->name('alerts.index');
+    Route::get('messages/alerts/{alert}/edit', [MessagesController::class, 'alert_edit'])->name('alert.edit');
+    Route::put('messages/alerts/{alert}/update', [MessagesController::class, 'alert_update'])->name('alert.update');
 
-
-    Route::resource('form',\App\Http\Controllers\FormController::class);
+    Route::resource('form', \App\Http\Controllers\FormController::class);
 });
-Route::get('/logout',function (){
-   \auth()->logout();
-   return redirect()->route('home');
+
+Route::post('ckeditor/image_upload', [CKEditorController::class, 'upload'])->name('upload');
+Route::get('/logout', function () {
+    \auth()->logout();
+    return redirect()->route('home');
 });
 
-Route::get('/verification/verify',function (){
+Route::get('/verification/verify', function () {
 
 })->name('verification.verify');
+
+Route::get('send/email', function () {
+
+    try {
+        $send_mail = 'test@gmail.com';
+        $email = new NewUserRegisteredAdminMail();
+        Mail::to($send_mail)->send($email);
+
+
+        dd('send mail successfully !!');
+    } catch (\Exception $exception) {
+        dd($exception->getMessage());
+    }
+
+});
 
 //Route::get('/auth-basic',function (){
 //   return 'Auth Basic';

@@ -20,10 +20,11 @@
     <link rel="icon" href="{{ imageExist(env('SETTING_UPLOAD_PATH'),$fav_icon) }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('home/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/css/developer.css') }}">
+    @yield('style')
 </head>
 
 
-<body id="dark">
+<body>
 <header class="dark-bb">
     <nav class="navbar navbar-expand-lg">
         <a class='navbar-brand' href='exchange-dark.html'><img src="./armaititrade-Logo.png" alt="logo"></a>
@@ -230,6 +231,13 @@
 <script src="{{ asset('home/js/amcharts.min.js') }}"></script>
 <script src="{{ asset('home/js/custom.js') }}"></script>
 <script src="{{ asset('admin/js/developer.js') }}"></script>
+<script src="{{ asset('admin/fullCKEditor/ckeditor/ckeditor.js') }}"></script>
+<script>
+    $('.nav-link').click(function () {
+        $('.dropdown-menu').removeClass('show');
+        $(this).parent().addClass('show');
+    });
+</script>
 @yield('script')
 </body>
 

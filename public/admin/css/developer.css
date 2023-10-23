@@ -15,3 +15,15 @@ div.dropdown-menu{
     font-size: 9pt;
     color: red;
 }
+
+body{
+    background-color: #eeeeee;
+}
+
+#v-pills-tab{
+    background-color: white !important;
+}
+
+/*#v-pills-tab > a,div{*/
+/*    border-bottom: 1px solid #CCCCCC;*/
+/*}*/

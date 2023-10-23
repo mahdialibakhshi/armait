@@ -3,12 +3,18 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Jobs\SendNewUserRegisteredForAdminJob;
+use App\Jobs\SendNewUserRegisteredForUserJob;
+use App\Mail\NewUserRegisteredAdminMail;
+use App\Models\Setting;
 use App\Models\Type;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use App\Rules\EmailValidate;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
 
@@ -35,8 +41,27 @@ class RegisterController extends Controller
 
     public function showRegistrationForm()
     {
-        $types=Type::all();
-        return view('auth.register',compact('types'));
+        $types = Type::all();
+        return view('auth.register', compact('types'));
+    }
+
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+        //send email with job
+        $admin = Setting::where('key', 'email')->pluck('value')->first();
+        dispatch(new SendNewUserRegisteredForAdminJob($admin));
+        dispatch(new SendNewUserRegisteredForUserJob($user->email));
+        session()->flash('UserRegistered');
+        if ($response = $this->registered($request, $user)) {
+            return $response;
+        }
+        return $request->wantsJson()
+                    ? new JsonResponse([], 201)
+                    : redirect($this->redirectPath());
+
     }
 
     protected $redirectTo = RouteServiceProvider::HOME;
@@ -54,7 +79,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -65,7 +90,7 @@ class RegisterController extends Controller
             'company_name' => ['required', 'string', 'max:255'],
             'field' => ['required', 'string', 'max:255'],
             'type' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users',new EmailValidate()],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', new EmailValidate()],
             'mobile_number' => ['required', 'string'],
         ]);
     }
@@ -73,7 +98,7 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param array $data
      * @return \App\Models\User
      */
     protected function create(array $data)
@@ -87,13 +112,5 @@ class RegisterController extends Controller
             'mobile_number' => $data['mobile_number'],
 //            'password' => Hash::make($data['password']),
         ]);
-
-        //send new User Registered For Admin
-        try {
-
-        }catch (\Exception $exception){
-
-        }
-        //send new User Registered For User
     }
 }
