@@ -1,5 +1,9 @@
 @extends('admin.layouts')
 
+@section('title')
+    Setting - header 2
+@endsection
+
 @section('content')
     <div class="settings mtb15">
         <div class="container-fluid">

@@ -1,5 +1,9 @@
 @extends('admin.layouts')
 
+@section('title')
+    Dashboard
+@endsection
+
 @section('content')
     <div class="settings mtb15">
         <div class="container-fluid">

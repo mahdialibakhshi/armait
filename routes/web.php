@@ -54,8 +54,11 @@ Route::name('admin.')->prefix('/admin-panel/management/')->group(function () {
     Route::get('users/{type}/index', [UserController::class, 'index'])->name('users.index');
     Route::post('users/remove', [UserController::class, 'remove'])->name('user.remove');
     Route::get('users/{type}/{user}', [UserController::class, 'edit'])->name('user.edit');
+    Route::get('users/{type}/{user}/mails', [UserController::class, 'mails'])->name('user.mails');
+    Route::get('users/{type}/{user}/mail/{mail}', [UserController::class, 'mail'])->name('user.mail');
     Route::put('users/{type}/{user}', [UserController::class, 'update'])->name('user.update');
     Route::post('users/reset_password/{user}', [UserController::class, 'reset_password'])->name('user.reset_password');
+    Route::post('users/sendMessage/mail/{user}', [UserController::class, 'sendMessage'])->name('user.sendMessage');
     //messages
     Route::get('messages/emails/index', [MessagesController::class, 'emails'])->name('emails.index');
     Route::get('messages/emails/{mail}/edit', [MessagesController::class, 'email_edit'])->name('email.edit');

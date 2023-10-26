@@ -1,5 +1,9 @@
 @extends('admin.layouts')
 
+@section('title')
+    Setting - header 2
+@endsection
+
 @section('script')
     <script>
         function removeModal(id, e) {
@@ -59,16 +63,16 @@
                                                     New
                                                 </a>
                                             </div>
-                                            <table class="table">
+                                            <table class="table table-striped">
                                                 <thead>
-                                                <tr>
-                                                    <th>priority</th>
-                                                    <th>Title</th>
-                                                    <th>Number 1(min)</th>
-                                                    <th>Number 2(max)</th>
-                                                    <th>Number 3</th>
-                                                    <th>created at</th>
-                                                    <th></th>
+                                                <tr class="bg-dark">
+                                                    <th class="text-white">priority</th>
+                                                    <th class="text-white">Title</th>
+                                                    <th class="text-white">Number 1(min)</th>
+                                                    <th class="text-white">Number 2(max)</th>
+                                                    <th class="text-white">Number 3</th>
+                                                    <th class="text-white">created at</th>
+                                                    <th class="text-white"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>

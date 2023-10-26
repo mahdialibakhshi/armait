@@ -1,4 +1,8 @@
 @extends('admin.layouts')
+@section('title')
+    {{ $type }} Users
+@endsection
+
 @section('script')
     <script>
         $(document).ready(function () {
@@ -29,6 +33,16 @@
             console.log(text);
             $('#new_password').val(text);
         }
+
+        CKEDITOR.replace( 'message' ,{
+            filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+
+        CKEDITOR.replace( 'note' ,{
+            filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
     </script>
 @endsection
 @section('content')
@@ -134,6 +148,11 @@
                                                                 @endforeach
                                                             </select>
                                                         </div>
+                                                        <div class="col-12 mb-3">
+                                                            <label for="note">Note:</label>
+                                                            <textarea rows="5" id="note" name="note"
+                                                                      class="form-control">{{ $user->note }}</textarea>
+                                                        </div>
                                                         <div class="col-md-12">
                                                             <button class="btn btn-info btn-sm mb-2" type="submit">
                                                                 Update
@@ -149,7 +168,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-12 col-md-6">
+                                <div class="col-12">
                                     <div class="card">
                                         <div class="card-body">
                                             <div class="text-white">
@@ -158,18 +177,28 @@
                                             </div>
                                             <div class="settings-profile">
                                                 <form method="POST"
-                                                      action="#">
+                                                      action="{{ route('admin.user.sendMessage',['user'=>$user->id]) }}">
                                                     @csrf
-                                                    @method('put')
                                                     <div class="form-row mt-4">
+                                                        <div class="col-md-6">
+                                                            <label for="title">Subject</label>
+                                                            <input id="title" type="text" name="title"
+                                                                   class="form-control" value="{{ old('title') }}">
+                                                            @error('title')
+                                                            <p class="input-error-validate">
+                                                                {{ $message }}
+                                                            </p>
+                                                            @enderror
+                                                        </div>
                                                         <div class="col-12 mb-3">
-                                                            <label for="name">Template</label>
-                                                            <select name="status" id="status" class="form-control">
-                                                                @foreach($messages as $message)
-                                                                    <option
-                                                                        value="{{ $message->id }}">{{ $message->title }}</option>
-                                                                @endforeach
-                                                            </select>
+                                                            <label for="message">Message:</label>
+                                                            <textarea rows="10" id="message" name="message"
+                                                                      class="form-control">{{ old('message') }}</textarea>
+                                                            @error('message')
+                                                            <p class="input-error-validate">
+                                                                {{ $message }}
+                                                            </p>
+                                                            @enderror
                                                         </div>
                                                         <div class="col-md-12">
                                                             <button class="btn btn-info btn-sm mb-2" type="submit"> Send

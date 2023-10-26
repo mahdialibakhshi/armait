@@ -1,14 +1,16 @@
 @extends('layouts.app')
 
 @section('script')
-    <script>
-        $(document).ready(function () {
-            let UserRegistered = {{ $UserRegistered }};
-            if (UserRegistered) {
-                $('#exampleModal').modal('show');
-            }
-        })
-    </script>
+    @if($UserRegistered==true)
+        <script>
+            $(document).ready(function () {
+                let UserRegistered = {{ $UserRegistered }};
+                if (UserRegistered) {
+                    $('#exampleModal').modal('show');
+                }
+            })
+        </script>
+    @endif
 @endsection
 
 @section('content')
@@ -25,13 +27,23 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="d-flex justify-content-center align-items-center">
-                    <span
-                        style="display: flex;justify-content:center;align-items:center;width: 200px;height: 60px;background-color: black;color: white;font-size: 35px">
-                        <span>03</span>
-                        <span class="mr-3 ml-3">00</span>
-                        <span>00</span>
-                    </span>
+                <div id="timer" class="text-center">
+                    <div>
+                        <span class="timer">
+                            <span id="Hours">00</span>
+<span class="timer_text" style="right: -4px">Hours</span>
+                        </span>
+                        <span class="timer">:</span>
+                        <span class="timer" style="margin-left: 5px">
+                            <span id="Minutes">00</span>
+                        <span class="timer_text" style="left: -4px">Minutes</span>
+                        </span>
+                        <span class="timer">:</span>
+                        <span class="timer" style="margin-left: 5px">
+                            <span id="Seconds">00</span>
+                        <span class="timer_text" style="left: -5px">Seconds</span>
+                        </span>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -162,9 +174,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h5 class="alert alert-info text-center">
-                            {{ $UserRegistered_message->text }}
-                        </h5>
+                        {!! $UserRegistered_message->text !!}
+
                     </div>
                 </div>
             </div>

@@ -21,9 +21,9 @@ class SettingController extends Controller
             try{
                 if ($request->has('logo')) {
                 $fileNameImage = generateFileName($request->logo->getClientOriginalName());
-    
+
                 $request->logo->move(env('SETTING_UPLOAD_PATH'), $fileNameImage);
-                     
+
                 $path = public_path(env('SETTING_UPLOAD_PATH') . $logo);
                 unlink_image_helper_function($path);
                 $logo = $fileNameImage;
@@ -55,6 +55,8 @@ class SettingController extends Controller
             $title = $request->title;
             $meta_keywords = $request->meta_keywords;
             $meta_description = $request->meta_description;
+            $start_market = $request->start_market;
+            $end_market = $request->end_market;
             $array = [
                 'title' => $title,
                 'meta_keywords' => $meta_keywords,
@@ -63,6 +65,8 @@ class SettingController extends Controller
                 'logo' => $logo,
                 'footer_logo' => $footer_logo,
                 'fav_icon' => $fav_icon,
+                'start_market' => $start_market,
+                'end_market' => $end_market,
             ];
             foreach ($array as $key => $item) {
                 $config = Setting::where('key', $key)->first();

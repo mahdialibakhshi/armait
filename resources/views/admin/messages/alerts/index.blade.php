@@ -1,5 +1,9 @@
 @extends('admin.layouts')
 
+@section('title')
+    Messages - alerts
+@endsection
+
 @section('style')
     <style>
         .markets-pair-list th, .markets-pair-list td{
@@ -65,13 +69,13 @@
                                     <div class="col-md-12">
                                         <div class="markets-pair-list">
                                             <div id="alert"></div>
-                                            <table class="table">
+                                            <table class="table table-striped">
                                                 <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>title</th>
-                                                    <th>Description</th>
-                                                    <th></th>
+                                                <tr class="bg-dark">
+                                                    <th class="text-white">#</th>
+                                                    <th class="text-white">title</th>
+                                                    <th class="text-white">Description</th>
+                                                    <th class="text-white"></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>

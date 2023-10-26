@@ -2,6 +2,7 @@
 @import url("bootstrap.min.css");
 @import url("ionicons.min.css");
 @import url("jquery.mCustomScrollbar.min.css");
+
 body {
     font-family: 'Overpass', sans-serif;
     font-size: 14px;
@@ -2274,9 +2275,11 @@ tbody.ob-heading {
     .market-pairs tbody {
         height: 760px;
     }
+
     .no-fluid .market-pairs tbody {
         height: 815px;
     }
+
     .settings-profile .custom-file {
         width: 25%;
     }
@@ -2286,6 +2289,7 @@ tbody.ob-heading {
     .market-pairs tbody {
         height: 740px;
     }
+
     .no-fluid .market-pairs tbody {
         height: 755px;
     }
@@ -2301,58 +2305,75 @@ tbody.ob-heading {
     footer.landing-footer-two h3 {
         margin-top: 30px;
     }
+
     .tradingview-tecnical-analys {
         margin-top: 50px;
     }
+
     .btn-1,
     .btn-2 {
         margin: 8px;
         text-align: center;
     }
+
     .mtb100 {
         margin: 50px 0;
     }
+
     .landing-hero {
         margin: 50px 0;
     }
+
     .landing-number p {
         margin-bottom: 40px;
     }
+
     .landing-number {
         padding: 40px 0 0;
     }
+
     .tradingview-gain-and-loser {
         margin-bottom: 50px;
     }
+
     .landing-feature {
         padding: 50px 0 30px;
     }
+
     .landing-sub {
         padding: 50px 0;
     }
+
     .landing-sub-content h2 {
         font-size: 26px;
     }
+
     .landing-number h2 {
         font-size: 40px;
     }
+
     .visible-mobile {
         display: block;
         margin-top: 50px;
     }
+
     .landing-hero h2 {
         font-size: 36px;
     }
+
     .landing-feature-item {
         margin-bottom: 30px;
     }
+
     .landing-info-one-bg,
     #dark .landing-info-one-bg {
         background: none;
     }
+
     .settings-nav {
         margin-bottom: 15px;
     }
+
     .settings-profile .custom-file {
         width: 35%;
     }
@@ -2374,55 +2395,71 @@ tbody.ob-heading {
     footer.landing-footer {
         text-align: center;
     }
+
     footer.landing-footer img {
         margin-bottom: 10px;
     }
+
     footer.landing-footer .d-flex {
         display: block !important;
     }
+
     .settings-profile .custom-file {
         width: 45%;
     }
+
     header button.navbar-toggler i {
         font-size: 30px;
         color: #4a4a4a;
     }
+
     header button.navbar-toggler:focus {
         outline: none;
     }
+
     .navbar-collapse .dropdown.menu-avatar-icon {
         margin-top: 10px;
     }
+
     .no-fluid .market-pairs {
         margin-bottom: 15px;
     }
+
     .no-fluid .order-book {
         margin-top: 15px;
     }
+
     .circle-pulse {
         left: 27px;
         right: inherit;
     }
+
     .dropdown-menu::before {
         right: inherit;
         left: 5%;
     }
+
     .wallet .nav {
         margin-bottom: 30px;
     }
+
     .wallet-address img {
         margin-top: 40px;
     }
+
     #dark header button.navbar-toggler i {
         color: #c5cbce;
     }
+
     .market-order-item {
         padding: 5px 5px;
         overflow: hidden;
     }
+
     .market-order-item li {
         font-size: 12px;
     }
+
     .markets-capital-item {
         height: 304px;
     }
@@ -2433,16 +2470,25 @@ tbody.ob-heading {
         height: 91.4%;
     }
 }
+
 /* for Firefox */
 @-moz-keyframes my-animation {
-    from { -moz-transform: translateX(-100%); }
-    to { -moz-transform: translateX(100%); }
+    from {
+        -moz-transform: translateX(-100%);
+    }
+    to {
+        -moz-transform: translateX(100%);
+    }
 }
 
 /* for Chrome */
 @-webkit-keyframes my-animation {
-    from { -webkit-transform: translateX(-100%); }
-    to { -webkit-transform: translateX(100%); }
+    from {
+        -webkit-transform: translateX(-100%);
+    }
+    to {
+        -webkit-transform: translateX(100%);
+    }
 }
 
 @keyframes my-animation {
@@ -2457,7 +2503,8 @@ tbody.ob-heading {
         transform: translateX(-100%);
     }
 }
-.scroll-container > div{
+
+.scroll-container > div {
     -moz-transform: translateX(100%);
     -webkit-transform: translateX(100%);
     transform: translateX(100%);
@@ -2465,122 +2512,129 @@ tbody.ob-heading {
     -webkit-animation: my-animation 40s linear infinite;
     animation: my-animation 40s linear 1s infinite;
 }
-.header2Title{
+
+.header2Title {
     width: 79px;
 }
-.header1{
+
+.header1 {
     width: max-content;
 }
-.header1 > span{
+
+.header1 > span {
     width: fit-content;
     display: inline-block;
 }
-.header2{
+
+.header2 {
     width: max-content;
     background-color: #19244d;
     color: white;
 }
-@media screen and (min-width: 1550px){
-    .header1{
+
+@media screen and (min-width: 1550px) {
+    .header1 {
         width: 100%;
     }
-    .header2{
+
+    .header2 {
         width: 100%;
     }
-    .header1Pi{
+
+    .header1Pi {
         margin: 2px 14px;
     }
-    .header2Pi{
+
+    .header2Pi {
         margin: 2px 17px;
     }
 }
 
 /*# sourceMappingURL=style.css.map */
 
-.animation_main_div{
-    display:block;
-    width:5px;
-    margin:0 10px;
+.animation_main_div {
+    display: block;
+    width: 5px;
+    margin: 0 10px;
 }
 
 
-.circle{
+.circle {
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: #137713;
     position: absolute;
     -webkit-animation-timing-function: linear;
-    -webkit-animation: scaler 4s infinite;  /* Chrome, Safari, Opera */
-    -webkit-animation-timing-function: linear;  /* Chrome, Safari, Opera */
+    -webkit-animation: scaler 4s infinite; /* Chrome, Safari, Opera */
+    -webkit-animation-timing-function: linear; /* Chrome, Safari, Opera */
     animation: scaler 4s infinite;
     animation-timing-function: linear;
 }
 
-.circle2{
+.circle2 {
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: #137713;
     position: absolute;
     -webkit-animation-timing-function: linear;
-    -webkit-animation: scaler 4s infinite;  /* Chrome, Safari, Opera */
-    -webkit-animation-timing-function: linear;  /* Chrome, Safari, Opera */
+    -webkit-animation: scaler 4s infinite; /* Chrome, Safari, Opera */
+    -webkit-animation-timing-function: linear; /* Chrome, Safari, Opera */
     animation: scaler 4s infinite;
     animation-timing-function: linear;
     -webkit-animation-delay: 1s;
 }
 
-.circle3{
+.circle3 {
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: #137713;
     position: absolute;
     -webkit-animation-timing-function: linear;
-    -webkit-animation: scaler 4s infinite;  /* Chrome, Safari, Opera */
-    -webkit-animation-timing-function: linear;  /* Chrome, Safari, Opera */
+    -webkit-animation: scaler 4s infinite; /* Chrome, Safari, Opera */
+    -webkit-animation-timing-function: linear; /* Chrome, Safari, Opera */
     animation: scaler 4s infinite;
     animation-timing-function: linear;
     -webkit-animation-delay: 2s;
 }
 
 
-.circle4{
+.circle4 {
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background: #137713;
     position: absolute;
     -webkit-animation-timing-function: linear;
-    -webkit-animation: scaler 4s infinite;  /* Chrome, Safari, Opera */
-    -moz-animation: scaler 4s infinite;  /* Chrome, Safari, Opera */
-    animation: scaler 4s infinite;  /* Chrome, Safari, Opera */
-    -webkit-animation-timing-function: linear;  /* Chrome, Safari, Opera */
+    -webkit-animation: scaler 4s infinite; /* Chrome, Safari, Opera */
+    -moz-animation: scaler 4s infinite; /* Chrome, Safari, Opera */
+    animation: scaler 4s infinite; /* Chrome, Safari, Opera */
+    -webkit-animation-timing-function: linear; /* Chrome, Safari, Opera */
     animation: scaler 4s infinite;
     animation-timing-function: linear;
     -webkit-animation-delay: 3s;
 }
 
 
+@-webkit-keyframes scaler {
 
-@-webkit-keyframes scaler{
-
-    0%{
+    0% {
         -webkit-transform: scale(1);
     }
 
-    33%{
+    33% {
         -webkit-transform: scale(4);
         opacity: 0.20;
     }
 
-    67%{
+    67% {
         -webkit-transform: scale(7);
         opacity: 0.10;
     }
 
-    100%{
+    100% {
         -webkit-transform: scale(10);
         opacity: 0;
     }
@@ -2588,23 +2642,23 @@ tbody.ob-heading {
 
 }
 
-@-moz-keyframes scaler{
+@-moz-keyframes scaler {
 
-    0%{
+    0% {
         -moz-transform: scale(1);
     }
 
-    33%{
+    33% {
         -moz-transform: scale(4);
         opacity: 0.20;
     }
 
-    67%{
+    67% {
         -moz-transform: scale(7);
         opacity: 0.10;
     }
 
-    100%{
+    100% {
         -moz-transform: scale(10);
         opacity: 0;
     }
@@ -2612,31 +2666,66 @@ tbody.ob-heading {
 
 }
 
-@keyframes scaler{
+@keyframes scaler {
 
-    0%{
+    0% {
         transform: scale(1);
     }
 
-    33%{
+    33% {
         transform: scale(4);
         opacity: 0.20;
     }
 
-    67%{
+    67% {
         transform: scale(7);
         opacity: 0.10;
     }
 
-    100%{
+    100% {
         transform: scale(10);
         opacity: 0;
     }
 }
 
-.navbar{
+.navbar {
     background-color: #f8f8f8;
 }
-.h-100{
+
+.h-100 {
     height: 100%;
+}
+
+.time {
+    font-size: 40px;
+    text-align: center;
+}
+
+#counter {
+    font-size: 40px;
+}
+
+.circle-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    color: white;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    font-size: 7pt;
+}
+
+.timer {
+    position: relative;
+    font-size: 40px;
+    display: inline-block;
+    width: 50px;
+}
+
+.timer_text {
+    position: absolute;
+    top: 50px;
+    font-size: 14pt;
 }

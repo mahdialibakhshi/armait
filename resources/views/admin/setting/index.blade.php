@@ -1,5 +1,9 @@
 @extends('admin.layouts')
 
+@section('title')
+    Setting - Config
+@endsection
+
 @section('content')
     <div class="settings mtb15">
         <div class="container-fluid">
@@ -14,7 +18,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     @include('admin.sections.alert')
-                 
+
                                     <div class="row">
                                         <div class="col-12 col-md-4 text-center">
                                             <img  src="{{ imageExist(env('SETTING_UPLOAD_PATH'),$logo) }}">
@@ -87,6 +91,28 @@
                                                            class="form-control"
                                                            placeholder="Meta Keywords" value="{{ $meta_keywords }}">
                                                     @error('meta_keywords')
+                                                    <p class="input-error-validate">
+                                                        {{ $message }}
+                                                    </p>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="start_market">Market Start At</label>
+                                                    <input id="start_market" type="time" name="start_market"
+                                                           class="form-control"
+                                                           value="{{ $start_market }}">
+                                                    @error('start_market')
+                                                    <p class="input-error-validate">
+                                                        {{ $message }}
+                                                    </p>
+                                                    @enderror
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="end_market">Market End At</label>
+                                                    <input id="end_market" type="time" name="end_market"
+                                                           class="form-control"
+                                                           value="{{ $end_market }}">
+                                                    @error('end_market')
                                                     <p class="input-error-validate">
                                                         {{ $message }}
                                                     </p>

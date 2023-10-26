@@ -25,6 +25,8 @@ class User extends Authenticatable
         'type',
         'email',
         'mobile_number',
+        'status',
+        'note'
     ];
 
     /**
@@ -49,5 +51,9 @@ class User extends Authenticatable
 
     public function UserStatus(){
         return $this->belongsTo(UserStatus::class,'status','id');
+    }
+
+    public function Mails(){
+        return $this->hasMany(UserMail::class,'user_id','id');
     }
 }

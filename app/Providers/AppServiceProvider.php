@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Header1;
 use App\Models\Header2;
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 
@@ -33,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
         $robot_index = Setting::where('key', 'robot_index')->pluck('value')->first();
         $meta_description = Setting::where('key', 'meta_description')->pluck('value')->first();
         $footer_logo = Setting::where('key', 'footer_logo')->pluck('value')->first();
+        $start_market = Setting::where('key', 'start_market')->pluck('value')->first();
+        $end_market = Setting::where('key', 'end_market')->pluck('value')->first();
         view()->share(
             compact(
                 'header1',
@@ -43,7 +46,15 @@ class AppServiceProvider extends ServiceProvider
                 'title',
                 'meta_keywords',
                 'robot_index',
-                'meta_description'
+                'meta_description',
+                'start_market',
+                'end_market'
             ));
+
+
+        view()->composer(['admin.sidebar'], function ($view) {
+            $penddig_users = User::where('status', 0)->count();
+            $view->with(compact('penddig_users'));
+        });
     }
 }

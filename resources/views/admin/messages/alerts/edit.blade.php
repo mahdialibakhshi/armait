@@ -1,4 +1,9 @@
 @extends('admin.layouts')
+
+@section('title')
+    Messages - alerts
+@endsection
+
 @section('script')
     <script>
         $(document).ready(function () {

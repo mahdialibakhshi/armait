@@ -12,13 +12,23 @@
         Dashboard
     </a>
     <div class="dropdown">
-        <a class="nav-link {{ request()->is('admin-panel/management/users*') ? 'active' : '' }}" type="button" id="UsersMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fa fa-users"></i>
+        <a class="d-flex justify-content-between align-items-center nav-link {{ request()->is('admin-panel/management/users*') ? 'active' : '' }}" type="button" id="UsersMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span>
+                <i class="fa fa-users"></i>
             Users
+            </span>
+            @if($penddig_users>0)
+            <span class="circle-notification">{{ $penddig_users }}</span>
+            @endif
         </a>
         <div class="dropdown-menu {{ request()->is('admin-panel/management/users*') ? 'show' : '' }}" aria-labelledby="UsersMenuButton">
             <a class="dropdown-item {{ request()->is('admin-panel/management/users/registered*') ? 'dropdown-item-active' : '' }}" href="{{ route('admin.users.index',['type'=>'registered']) }}">registered</a>
-            <a class="dropdown-item {{ request()->is('admin-panel/management/users/pending*') ? 'dropdown-item-active' : '' }}" href="{{ route('admin.users.index',['type'=>'pending']) }}">pending</a>
+            <a class="d-flex justify-content-between align-items-center dropdown-item {{ request()->is('admin-panel/management/users/pending*') ? 'dropdown-item-active' : '' }}" href="{{ route('admin.users.index',['type'=>'pending']) }}">
+                <span>pending</span>
+                @if($penddig_users>0)
+                    <span class="circle-notification">{{ $penddig_users }}</span>
+                @endif
+            </a>
             <a class="dropdown-item {{ request()->is('admin-panel/management/users/denied*') ? 'dropdown-item-active' : '' }}" href="{{ route('admin.users.index',['type'=>'denied']) }}">denied</a>
         </div>
     </div>
